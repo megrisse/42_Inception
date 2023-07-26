@@ -2,4 +2,8 @@ FROM debian:buster
 
 RUN apt update -y && apt install mariadb-server -y
 
-CMD [ "sleep", "100000"]
+COPY ./tools/script.sh .
+
+RUN chmod +x script.sh
+
+CMD [ "./script.sh"]
