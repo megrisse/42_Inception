@@ -1,12 +1,12 @@
 version: "3.0"
 
 services:
-#   wordpress:
-#     build: ./requirements/wordpress
-#     container_name: wordpress
-#     env_file: .env
-#     ports:
-#       - "9000:9000"
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: wordpress
+    env_file: .env
+    ports:
+      - "9000:9000"
   mariadb:
    build: ./requirements/mariadb
    container_name: mariadb
