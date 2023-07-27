@@ -13,4 +13,6 @@ echo "FLUSH PRIVILEGES;" >> database.sql
 
 mysql < database.sql
 
+kill $(cat /var/run/mysqld/mysqld.pid)
+
 mysqld
