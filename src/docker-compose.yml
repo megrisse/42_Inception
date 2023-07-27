@@ -13,4 +13,10 @@ services:
    env_file: .env
    ports:
     - "3306:3306"
+  nginx:
+   build: ./requirements/nginx
+   container_name: nginx
+   env_file: .env
+   ports:
+    - "433:433"
 
