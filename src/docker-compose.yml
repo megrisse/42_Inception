@@ -2,21 +2,58 @@ version: "3.0"
 
 services:
   wordpress:
-    build: ./requirements/wordpress
     container_name: wordpress
+    image: wordpress:1337
+    build: ./requirements/wordpress
     env_file: .env
     ports:
       - "9000:9000"
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - inception
+    restart: always
   mariadb:
-   build: ./requirements/mariadb
-   container_name: mariadb
-   env_file: .env
-   ports:
-    - "3306:3306"
+      container_name: mariadb
+      image: mariadb:1337
+      build: ./requirements/mariadb
+      env_file: .env
+      ports:
+       - "3306:3306"
+      volumes:
+       - mariadb:/var/lib/mysql
+      networks:
+       - inception
+      restart: always
   nginx:
-   build: ./requirements/nginx
-   container_name: nginx
-   env_file: .env
-   ports:
-    - "433:433"
+    container_name: nginx 
+    image: nginx:1337
+    build: ./requirements/nginx
+    env_file: .env
+    ports:
+     - "433:433"
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+     - inception
+    restart: always
 
+volumes:
+    mariadb:
+        name: mariadb
+        driver: local
+        driver_opts:
+          device: /Users/megrisse/Desktop/42_Inception/src/requirements/mariadb
+          type: none
+          o: bind
+    wordpress:
+        name: wordpress
+        driver: local
+        driver_opts:
+          device: /Users/megrisse/Desktop/42_Inception/src/requirements/wordpress
+          type: none
+          o: bind
+
+networks:
+  inception:
+    name: inception
