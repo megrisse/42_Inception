@@ -43,14 +43,14 @@ volumes:
         name: mariadb
         driver: local
         driver_opts:
-          device: /Users/megrisse/Desktop/42_Inception/src/requirements/mariadb
+          device: /Users/megrisse/Desktop/42_Inception/data/mariadb
           type: none
           o: bind
     wordpress:
         name: wordpress
         driver: local
         driver_opts:
-          device: /Users/megrisse/Desktop/42_Inception/src/requirements/wordpress
+          device: /Users/megrisse/Desktop/42_Inception/data/wordpress
           type: none
           o: bind
 

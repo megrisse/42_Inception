@@ -5,10 +5,11 @@ sed -i "s/bind-address            = 127.0.0.1/bind-address           = 0.0.0.0/g
 
 service mysql start
 
-echo "CREATE DATABASE $db_name ;" > database.sql
-echo "CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_password' ;" >> database.sql
-echo "GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'%' ;" >> database.sql
-echo "ALTER USER '$db_user'@'%' IDENTIFIED BY '$db_password' ;" >> database.sql
+echo "CREATE DATABASE $DB_NAME ;" > database.sql
+echo "CREATE USER '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS' ;" >> database.sql
+echo "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%' ;" >> database.sql
+echo "ALTER USER '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS' ;" >> database.sql
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$ROOT_PASS' ;" >> database.sql
 echo "FLUSH PRIVILEGES;" >> database.sql
 
 mysql < database.sql
