@@ -12,6 +12,7 @@ wp --allow-root core config --dbhost=mariadb --dbname=$DB_NAME --dbuser=$DB_USER
 chmod 777 /var/www/html/wp-config.php
 
 wp --allow-root core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_EMAIL --skip-email
-# wp --allow-root user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_PASS 
+
+wp --allow-root user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_PASS 
 
 exec php-fpm7.3 -F
