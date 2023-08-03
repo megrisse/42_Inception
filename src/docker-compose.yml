@@ -9,10 +9,12 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - "wordpress:/var/www/html"
+      - "wordpress:/var/www/html/"
     networks:
       - inception
     restart: always
+    depends_on:
+      - mariadb
   mariadb:
       container_name: mariadb
       image: mariadb:1337
@@ -31,12 +33,14 @@ services:
     build: ./requirements/nginx
     env_file: .env
     ports:
-     - "433:433"
+     - "443:443"
     volumes:
-      - "wordpress:/var/www/html"
+      - "wordpress:/var/www/html/"
     networks:
      - inception
     restart: always
+    depends_on:
+      - wordpress
 
 volumes:
     mariadb:
@@ -44,14 +48,14 @@ volumes:
         driver: local
         driver_opts:
           device: /Users/megrisse/Desktop/42_Inception/data/mariadb
-          type: none
+          type: volume
           o: bind
     wordpress:
         name: wordpress
         driver: local
         driver_opts:
           device: /Users/megrisse/Desktop/42_Inception/data/wordpress
-          type: none
+          type: volume
           o: bind
 
 networks:

@@ -1,14 +1,13 @@
 FROM debian:buster
 
+RUN mkdir -vp /var/www/html
+
 RUN apt update -y && apt upgrade -y
 
-RUN apt install nginx -y && apt install vim -y && apt install curl -y
+RUN apt install -y nginx openssl curl
 
-RUN apt install openssl -y
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/prive-cert.key -out /etc/ssl/certs/pub-cert.crt -subj "/C=KH/ST=Kouribga/L=Khouribga/O=Global Security/OU=IT Department/CN=1337.ma"
 
-COPY ./tools/script.sh .
-COPY ./conf /etc/nginx/sites-available/default
+COPY ./default.conf /etc/nginx/conf.d/
 
-RUN chmod +x script.sh
-
-CMD ["./script.sh"]
+CMD ["nginx" , "-g", "daemon off;" ]

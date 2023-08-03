@@ -1,14 +1,5 @@
 #!/bin/bash
 
-openssl genpkey -algorithm RSA -out /etc/ssl/private/nginx-selfsigned.key
-
-mkdir -vp /etc/ssl/csr
-
-openssl req -new -key /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/csr/nginx-selfsigned.csr -subj "/C=MO/L=KH/O=1337/OU=student/CN=megrisse.1337.ma" 
-
-
-openssl x509 -req -days 365 -in /etc/ssl/csr/nginx-selfsigned.csr -signkey /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
 
 nginx -g "daemon off;"
-
-sleep 100000
