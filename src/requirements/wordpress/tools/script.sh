@@ -15,4 +15,18 @@ wp --allow-root core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=
 
 wp --allow-root user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_PASS 
 
+echo "define( 'WP_REDIS_HOST', 'redis' );" >> /var/www/html/wp-config.php
+echo "define( 'WP_REDIS_PORT', 6379 );" >> /var/www/html/wp-config.php
+echo "define('WP_CACHE', true);" >> /var/www/html/wp-config.php
+
+# sed -i "s/define( 'WP_DEBUG', false );/define( 'WP_DEBUG', true );/g" /var/www/html/wp-config.php
+
+wp --activate --allow-root theme install astra
+
+wp --activate --allow-root plugin install redis-cache
+
+wp --all --allow-root plugin update
+
+wp --allow-root redis enable
+
 exec php-fpm7.3 -F

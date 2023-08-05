@@ -41,6 +41,17 @@ services:
     restart: always
     depends_on:
       - wordpress
+  redis:
+    container_name: redis
+    image: redis:1337
+    build: ./requirements/bonus/redis
+    volumes:
+      - "wordpress:/var/www/html/"
+    networks:
+     - inception
+    restart: always
+    depends_on:
+      - wordpress
 
 volumes:
     mariadb:
