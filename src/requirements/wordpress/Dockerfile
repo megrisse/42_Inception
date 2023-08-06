@@ -8,6 +8,8 @@ RUN mkdir /run/php
 
 COPY tools/script.sh script.sh
 
+COPY tools/wp-config.php wp-config.php
+
 RUN chmod +x script.sh
 
 RUN apt update -y && apt upgrade -y
