@@ -1,5 +1,4 @@
 
-
 build : 
 	cd src/ && ./setup.sh && docker compose up --build
 

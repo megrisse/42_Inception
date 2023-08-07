@@ -9,7 +9,7 @@ echo "ALTER USER '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS' ;" >> database.sql
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$ROOT_PASS' ;" >> database.sql
 echo "FLUSH PRIVILEGES;" >> database.sql
 
-sleep 1
+sleep 10
 
 mysql < database.sql
 
