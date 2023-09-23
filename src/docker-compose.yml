@@ -73,7 +73,7 @@ volumes:
         driver: local
         driver_opts:
         #change volume device to /home/megrisse/data/mariadb
-          device: /Users/megrisse/Desktop/42_Inception/data/mariadb
+          device: /home/megrisse/data/mariadb
           type: volume
           o: bind
     wordpress:
@@ -81,7 +81,7 @@ volumes:
         driver: local
         driver_opts:
         #change volume device to /home/megrisse/data/wordpress
-          device: /Users/megrisse/Desktop/42_Inception/data/wordpress
+          device: /home/megrisse/data/wordpress
           type: volume
           o: bind
 

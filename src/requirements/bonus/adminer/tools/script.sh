@@ -6,7 +6,7 @@ cd /var/www/html
 
 wget "http://www.adminer.org/latest.php" -O adminer.php
 
-mv latest.php adminer.php
+# mv latest.php adminer.php
 
 chown -R www-data:www-data /var/www/html/adminer.php
 
