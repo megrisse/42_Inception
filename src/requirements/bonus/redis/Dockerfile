@@ -1,6 +1,6 @@
 FROM debian:buster
 
-RUN apt update -y && apt upgrade
+RUN apt update -y && apt upgrade -y
 
 RUN apt install redis-server -y
 
