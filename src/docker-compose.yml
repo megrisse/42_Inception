@@ -69,6 +69,7 @@ services:
 
 volumes:
     mariadb:
+        name: mariadb
         driver: local
         driver_opts:
         #change volume device to /home/megrisse/data/mariadb
@@ -76,6 +77,7 @@ volumes:
           type: volume
           o: bind
     wordpress:
+        name: wordpress
         driver: local
         driver_opts:
         #change volume device to /home/megrisse/data/wordpress
