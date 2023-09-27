@@ -28,7 +28,7 @@ services:
        - inception
       restart: on-failure
   nginx:
-    container_name: nginx 
+    container_name: nginx
     image: nginx:1337
     build: ./requirements/nginx
     env_file: .env
@@ -70,20 +70,17 @@ services:
 volumes:
     mariadb:
         name: mariadb
-        driver: local
         driver_opts:
-        #change volume device to /home/megrisse/data/mariadb
           device: /home/megrisse/data/mariadb
-          type: volume
+          type: none
           o: bind
     wordpress:
         name: wordpress
-        driver: local
         driver_opts:
-        #change volume device to /home/megrisse/data/wordpress
           device: /home/megrisse/data/wordpress
-          type: volume
+          type: none
           o: bind
 
 networks:
   inception:
+    driver: bridge

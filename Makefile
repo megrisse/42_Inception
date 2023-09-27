@@ -1,6 +1,6 @@
 
 build :
-	cd src/ && ./setup.sh && docker-compose up --build
+	cd src/ && sudo ./setup.sh && sudo docker-compose up --build
 
 stop :
-	cd src/  && docker-compose down && ./setup.sh
+	cd src/  && sudo docker-compose down && sudo ./setup.sh
