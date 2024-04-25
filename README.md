@@ -20,7 +20,7 @@ Clone the Repository:
 git clone https://github.com/megrisse/42_Inception.git
 cd 42_Inception
 ```
-Create .env File (Optional):
+Create .env File:
 
 Copy the .env.example file to .env.
 Update environment variables in .env according to your needs (e.g., database name, password).
